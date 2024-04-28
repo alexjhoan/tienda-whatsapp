@@ -1,5 +1,5 @@
 import PrivateLayout from '@/layouts/PrivateLayout'
-import { Box, styled } from '@mui/material'
+import { Box, Grid, styled, Container, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 
 const exampleData = [
@@ -75,23 +75,117 @@ const exampleData = [
   }
 ]
 
-const ConstainerGrid = styled(Box)(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)'
-}))
+const ConstainerGrid = styled(Box)(({ theme }) => ({}))
 
 const ProductsGrid = () => {
   return (
     <PrivateLayout title="Products Grid">
-      <ConstainerGrid>
-        <div>ProductsGrid</div>
-        <div>ProductsGrid</div>
-        <div>ProductsGrid</div>
-        <div>ProductsGrid</div>
-        <div>ProductsGrid</div>
-        <div>ProductsGrid</div>
-        <div>ProductsGrid</div>
-      </ConstainerGrid>
+      <Container maxWidth="lg">
+        <Grid container spacing={2} sx={{ rowGap: 2 }}>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia component="img" height="140" image="https://picsum.photos/200/300?random=1" alt="green iguana" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore sed blanditiis fugiat culpa cum, deleniti
+                    nobis nihil ipsam doloremque reprehenderit. Maxime, corrupti. Omnis numquam esse facilis iure iusto, ipsam
+                    explicabo?
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia component="img" height="140" image="https://picsum.photos/200/300?random=1" alt="green iguana" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore sed blanditiis fugiat culpa cum, deleniti
+                    nobis nihil ipsam doloremque reprehenderit. Maxime, corrupti. Omnis numquam esse facilis iure iusto, ipsam
+                    explicabo?
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia component="img" height="140" image="https://picsum.photos/200/300?random=1" alt="green iguana" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore sed blanditiis fugiat culpa cum, deleniti
+                    nobis nihil ipsam doloremque reprehenderit. Maxime, corrupti. Omnis numquam esse facilis iure iusto, ipsam
+                    explicabo?
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia component="img" height="140" image="https://picsum.photos/200/300?random=1" alt="green iguana" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore sed blanditiis fugiat culpa cum, deleniti
+                    nobis nihil ipsam doloremque reprehenderit. Maxime, corrupti. Omnis numquam esse facilis iure iusto, ipsam
+                    explicabo?
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia component="img" height="140" image="https://picsum.photos/200/300?random=1" alt="green iguana" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore sed blanditiis fugiat culpa cum, deleniti
+                    nobis nihil ipsam doloremque reprehenderit. Maxime, corrupti. Omnis numquam esse facilis iure iusto, ipsam
+                    explicabo?
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia component="img" height="140" image="https://picsum.photos/200/300?random=1" alt="green iguana" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore sed blanditiis fugiat culpa cum, deleniti
+                    nobis nihil ipsam doloremque reprehenderit. Maxime, corrupti. Omnis numquam esse facilis iure iusto, ipsam
+                    explicabo?
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
     </PrivateLayout>
   )
 }
