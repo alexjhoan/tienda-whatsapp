@@ -1,13 +1,12 @@
 import { FormatListBulleted, Home, Menu, Window } from '@mui/icons-material'
-import { Box, MenuItem, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Button, MenuItem, useMediaQuery, useTheme } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { CSSObject, Theme, styled } from '@mui/material/styles'
 import { NextPage } from 'next'
-import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 
 const drawerWidth = 240
 
@@ -33,9 +32,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
 })
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
-  [theme.breakpoints.down('md')]: {
-    display: 'none'
-  },
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: 'nowrap',
@@ -72,10 +68,17 @@ const LinkContainer = styled(Box)(({ theme }) => ({
     backgroundColor: '#F1F1F1',
     borderRadius: '10px',
     transition: 'background-color 150ms ease-in-out',
-    height: 44,
+    height: 40,
     overflow: 'hidden',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 40
+    },
     '.link-text': {
       fontWeight: '700'
+    },
+    '&.active': {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white
     },
     '&:hover': {
       backgroundColor: theme.palette.primary.main,
@@ -94,7 +97,7 @@ const LinkContainer = styled(Box)(({ theme }) => ({
   }
 }))
 
-const SideBar: NextPage = () => {
+const SideBar: NextPage = ({ item, setItem }: any) => {
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.down('lg'))
   const [open, setOpen] = React.useState(true)
@@ -137,25 +140,24 @@ const SideBar: NextPage = () => {
           <Typography sx={{ color: '#666666' }} fontWeight={'bold'} marginLeft={2} variant="body1">
             Menu Options
           </Typography>
-
           <IconButton onClick={handleDrawerClose}>
             <Menu />
           </IconButton>
         </Box>
         <Divider />
         <LinkContainer className={open ? '' : 'drawerClosed'}>
-          <Link className="linkContainer" href={'/dashboard'}>
+          <Button className={`linkContainer ${item === 0 ? 'active' : ''}`} onClick={() => setItem(0)}>
             <Home />
             <MenuItem className="link-text">Dashboard</MenuItem>
-          </Link>
-          <Link className="linkContainer" href={'/dashboards/products-list'}>
+          </Button>
+          <Button className={`linkContainer ${item === 1 ? 'active' : ''}`} onClick={() => setItem(1)}>
             <FormatListBulleted />
             <MenuItem className="link-text">Productos en lista</MenuItem>
-          </Link>
-          <Link className="linkContainer" href={'/dashboards/products-grid'}>
+          </Button>
+          <Button className={`linkContainer ${item === 2 ? 'active' : ''}`} onClick={() => setItem(2)}>
             <Window />
             <MenuItem className="link-text">Productos en grilla</MenuItem>
-          </Link>
+          </Button>
         </LinkContainer>
       </Drawer>
     </ContainerDrawer>

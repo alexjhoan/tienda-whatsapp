@@ -3,6 +3,7 @@ import { containerWidth } from '@/utils/const'
 import FormLogin from '@/views/FormLogin'
 import { AccountCircle, BorderColor, Cancel, Logout, Person } from '@mui/icons-material'
 import { Container, Typography, Button, Box, styled, IconButton, MenuItem, Stack } from '@mui/material'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
@@ -10,8 +11,9 @@ const NavContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: theme.spacing(2, 0)
+  padding: theme.spacing(2)
 }))
+
 const LinkContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-start',
@@ -38,11 +40,13 @@ const TopBar = () => {
   const [optionsDialog, setOptionsDialog] = useState(false)
   const router = useRouter()
   return (
-    <Box sx={{ borderBottom: 'solid 2px #0003' }} height={80}>
+    <Box sx={{ borderBottom: 'solid 2px #0003', position: 'fixed', width: '100%' }} height={80}>
       <NavContainer maxWidth={containerWidth}>
-        <Typography variant="h4" color="initial">
-          Logo
-        </Typography>
+        <Link href={'/'} style={{ textDecoration: 'none' }}>
+          <Typography variant="h4" color="initial">
+            Logo
+          </Typography>
+        </Link>
         <IconButton onClick={() => setOptionsDialog(true)}>
           <AccountCircle fontSize="large" />
         </IconButton>

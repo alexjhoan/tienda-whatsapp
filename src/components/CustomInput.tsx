@@ -1,8 +1,17 @@
 import { ChangeEvent, useState } from 'react'
-import { FormControl, FormLabel, IconButton, InputAdornment, StandardTextFieldProps, TextField, styled } from '@mui/material'
+import {
+  FormControl,
+  FormLabel,
+  IconButton,
+  InputAdornment,
+  StandardTextFieldProps,
+  TextField,
+  Typography,
+  styled
+} from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import { PatternFormat } from 'react-number-format'
+import { NumericFormat, PatternFormat } from 'react-number-format'
 
 interface validationTypes {
   validate: () => boolean
@@ -151,5 +160,8 @@ const FancyInput = ({
 export default FancyInput
 
 export const FancyInputPhone = ({ ...rest }) => {
-  return <PatternFormat format="+598 ## ### ###" customInput={FancyInput} type="tel" {...rest} />
+  return <PatternFormat format="+1 ## ### ###" customInput={FancyInput} type="tel" {...rest} />
+}
+export const Money = ({ ...rest }) => {
+  return <NumericFormat sx={{ fontFamily: 'Courier' }} thousandSeparator="," customInput={Typography} {...rest} />
 }

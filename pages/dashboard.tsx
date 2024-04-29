@@ -1,28 +1,47 @@
-import PrivateLayout from '@/layouts/PrivateLayout'
-import { containerWidth } from '@/utils/const'
-import { Stack } from '@mui/material'
-import Button from '@mui/material/Button'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import router from 'next/router'
+import SideBar from '@/layouts/private/Sidebar'
+import TopBar from '@/layouts/private/Topbar'
+import DashboardMain from '@/views/dashborads/DashboardMain'
+import ProductsGrid from '@/views/dashborads/ProductsGrid'
+import ProductsList from '@/views/dashborads/ProductsList'
+import { Box, Container, Stack, styled, useMediaQuery, useTheme } from '@mui/material'
+import { useState } from 'react'
+
+const ContainerLayout = styled(Box)(({ theme }) => ({
+  '.innerContent': {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    minHeight: 'calc(100vh - 80px)'
+  },
+  '.titleSection': {
+    background: theme.palette.secondary.main,
+    color: theme.palette.common.white
+  }
+}))
 
 const Dashboard = () => {
+  const [item, setItem] = useState<any>(0)
+  const theme = useTheme()
+  const isLg = useMediaQuery(theme.breakpoints.down('xl'))
+
   return (
-    <PrivateLayout>
-      <Container maxWidth={containerWidth}>
-        <Typography variant="h5" color="initial">
-          Dashboard Privado
-        </Typography>
-        <Stack direction={'row'} spacing={2} mt={4}>
-          <Button variant="outlined" color="primary" onClick={() => router.push('/dashboards/products-list')}>
-            productos en lista
-          </Button>
-          <Button variant="outlined" color="primary" onClick={() => router.push('/dashboards/products-grid')}>
-            productos en grilla
-          </Button>
-        </Stack>
-      </Container>
-    </PrivateLayout>
+    <ContainerLayout>
+      <TopBar />
+      <Stack direction={'row'}>
+        {/* @ts-ignore */}
+        <SideBar item={item} setItem={setItem} />
+        <Box className={'innerContent'}>
+          <Container maxWidth="lg" sx={{ ml: isLg ? 'auto' : 1, mt: 10 }}>
+            <Box mb={10} pt={3}>
+              {item === 0 && <DashboardMain item={item} setItem={setItem} />}
+              {item === 1 && <ProductsList />}
+              {item === 2 && <ProductsGrid />}
+            </Box>
+          </Container>
+          {/* <FooterUser /> */}
+        </Box>
+      </Stack>
+    </ContainerLayout>
   )
 }
 

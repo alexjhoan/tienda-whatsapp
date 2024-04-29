@@ -1,8 +1,10 @@
 import { Box, Container, Stack, Typography, styled, useMediaQuery, useTheme } from '@mui/material'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import FooterUser from './private/FooterUser'
-import SideBar from './private/Sidebar'
 import TopBar from './private/Topbar'
+import ProductsGrid from '@/views/dashborads/ProductsGrid'
+import ProductsList from '@/views/dashborads/ProductsList'
+import SideBar from './private/Sidebar'
 
 const ContainerLayout = styled(Box)(({ theme }) => ({
   '.innerContent': {
@@ -18,6 +20,7 @@ const ContainerLayout = styled(Box)(({ theme }) => ({
 }))
 
 const PrivateLayout = ({ title, children }: { title?: string; children: ReactNode }) => {
+  const [item, setItem] = useState(0)
   const theme = useTheme()
   const isLg = useMediaQuery(theme.breakpoints.down('xl'))
 
@@ -37,7 +40,9 @@ const PrivateLayout = ({ title, children }: { title?: string; children: ReactNod
                   {title}
                 </Typography>
               )}
-              {children}
+
+              <ProductsGrid />
+              <ProductsList />
             </Box>
           </Container>
           {/* <FooterUser /> */}

@@ -9,10 +9,6 @@ const Footer = () => {
       <Typography variant="h3" color="initial">
         Footer
       </Typography>
-      <Typography variant="body1" color="initial">
-        Por favor victor cuando hagas el footer no me dejes componente de footer_old, solo lo deje para que te puedas guiar de lo
-        que necesites, pero solo extrae lo necesario no copies y pegues todo
-      </Typography>
     </Container>
   )
 }

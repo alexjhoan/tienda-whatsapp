@@ -99,51 +99,34 @@ const theme = responsiveFontSizes(
             }
           }
         }
+      },
+      MuiCssBaseline: {
+        styleOverrides: `
+          @font-face {
+            font-family: 'Courier';
+            font-weight: 400;
+            src: local('Courier'), url(/fonts/courier-prime/CourierPrime-Regular.ttf) format('truetype');
+          }
+          @font-face {
+            font-family: 'Courier';
+            font-weight: 400;
+            font-style: italic;
+            src: local('Courier'), url(/fonts/courier-prime/CourierPrime-Italic.ttf) format('truetype');
+          }
+          @font-face {
+            font-family: 'Courier';
+            font-weight: 700;
+            src: local('Courier'), url(/fonts/courier-prime/CourierPrime-Bold.ttf) format('truetype');
+          }
+          @font-face {
+            font-family: 'Courier';
+            font-weight: 700;
+            font-style: italic;
+            src: local('Courier'), url(/fonts/courier-prime/CourierPrime-BoldItalic.ttf) format('truetype');
+          }
+
+        `
       }
-      // MuiCssBaseline: {
-      //   styleOverrides: `
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 200;
-      //       src: local('Saira'), url(/fonts/saira/Saira-ExtraLight.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 300;
-      //       src: local('Saira'), url(/fonts/saira/Saira-Light.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 400;
-      //       src: local('Saira'), url(/fonts/saira/Saira-Regular.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 500;
-      //       src: local('Saira'), url(/fonts/saira/Saira-Medium.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 600;
-      //       src: local('Saira'), url(/fonts/saira/Saira-SemiBold.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 700;
-      //       src: local('Saira'), url(/fonts/saira/Saira-Bold.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 800;
-      //       src: local('Saira'), url(/fonts/saira/Saira-ExtraBold.ttf) format('truetype');
-      //     }
-      //     @font-face {
-      //       font-family: 'Saira';
-      //       font-weight: 900;
-      //       src: local('Saira'), url(/fonts/saira/Saira-Black.ttf) format('truetype');
-      //     }
-      //   `
-      // }
     }
   })
 )

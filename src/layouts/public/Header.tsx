@@ -8,7 +8,7 @@ const NavContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: theme.spacing(2, 0)
+  padding: theme.spacing(2)
 }))
 
 const Header = () => {
