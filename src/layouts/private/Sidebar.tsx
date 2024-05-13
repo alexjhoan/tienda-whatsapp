@@ -47,6 +47,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 }))
 
 const ContainerDrawer = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('lg')]: {
+    position: 'fixed',
+    zIndex: 100
+  },
   '.MuiPaper-elevation': {
     top: '80px'
   }
@@ -97,6 +101,29 @@ const LinkContainer = styled(Box)(({ theme }) => ({
   }
 }))
 
+const Backdrop = styled(Box)(({ theme }) => ({
+  display: 'none',
+  zIndex: 90,
+  [theme.breakpoints.down('lg')]: {
+    display: 'block',
+    position: 'fixed',
+    background: '#00000080',
+    left: '0',
+    top: '0',
+    height: '100vh',
+    transition: 'opacity 200ms ease-in-out, width 10ms ease-in-out 200ms',
+    '&.drawerClosed': {
+      width: 0,
+      opacity: 0
+    },
+    '&.drawerOpen': {
+      transition: 'opacity ease-in-out 200ms',
+      width: '100vw',
+      opacity: 1
+    }
+  }
+}))
+
 const SideBar: NextPage = ({ item, setItem }: any) => {
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.down('lg'))
@@ -107,10 +134,12 @@ const SideBar: NextPage = ({ item, setItem }: any) => {
   }, [])
 
   const handleDrawerOpen = () => {
+    document.body.style.overflow = 'hidden'
     setOpen(true)
   }
 
   const handleDrawerClose = () => {
+    document.body.removeAttribute('style')
     setOpen(false)
   }
 
@@ -146,20 +175,39 @@ const SideBar: NextPage = ({ item, setItem }: any) => {
         </Box>
         <Divider />
         <LinkContainer className={open ? '' : 'drawerClosed'}>
-          <Button className={`linkContainer ${item === 0 ? 'active' : ''}`} onClick={() => setItem(0)}>
+          <Button
+            className={`linkContainer ${item === 0 ? 'active' : ''}`}
+            onClick={() => {
+              setItem(0)
+              handleDrawerClose()
+            }}
+          >
             <Home />
             <MenuItem className="link-text">Dashboard</MenuItem>
           </Button>
-          <Button className={`linkContainer ${item === 1 ? 'active' : ''}`} onClick={() => setItem(1)}>
+          <Button
+            className={`linkContainer ${item === 1 ? 'active' : ''}`}
+            onClick={() => {
+              setItem(1)
+              handleDrawerClose()
+            }}
+          >
             <FormatListBulleted />
             <MenuItem className="link-text">Productos en lista</MenuItem>
           </Button>
-          <Button className={`linkContainer ${item === 2 ? 'active' : ''}`} onClick={() => setItem(2)}>
+          <Button
+            className={`linkContainer ${item === 2 ? 'active' : ''}`}
+            onClick={() => {
+              setItem(2)
+              handleDrawerClose()
+            }}
+          >
             <Window />
             <MenuItem className="link-text">Productos en grilla</MenuItem>
           </Button>
         </LinkContainer>
       </Drawer>
+      <Backdrop onClick={handleDrawerClose} className={open ? 'drawerOpen' : 'drawerClosed'} />
     </ContainerDrawer>
   )
 }

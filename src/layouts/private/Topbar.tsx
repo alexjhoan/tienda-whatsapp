@@ -7,6 +7,15 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
+const BoxContainer = styled(Box)(({ theme }) => ({
+  borderBottom: 'solid 2px #0003',
+  position: 'fixed',
+  width: '100%',
+  zIndex: 200,
+  height: 80,
+  backgroundColor: theme.palette.common.white
+}))
+
 const NavContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
@@ -40,7 +49,7 @@ const TopBar = () => {
   const [optionsDialog, setOptionsDialog] = useState(false)
   const router = useRouter()
   return (
-    <Box sx={{ borderBottom: 'solid 2px #0003', position: 'fixed', width: '100%' }} height={80}>
+    <BoxContainer>
       <NavContainer maxWidth={containerWidth}>
         <Link href={'/'} style={{ textDecoration: 'none' }}>
           <Typography variant="h4" color="initial">
@@ -67,7 +76,7 @@ const TopBar = () => {
           </Stack>
         </CustomDialog>
       </NavContainer>
-    </Box>
+    </BoxContainer>
   )
 }
 

@@ -11,7 +11,13 @@ const ContainerLayout = styled(Box)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    minHeight: 'calc(100vh - 80px)'
+    minHeight: 'calc(100vh - 80px)',
+    [theme.breakpoints.down('lg')]: {
+      paddingLeft: 80
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 55
+    }
   },
   '.titleSection': {
     background: theme.palette.secondary.main,

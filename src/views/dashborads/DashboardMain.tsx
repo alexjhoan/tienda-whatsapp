@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 
 const DashboardMain = ({ item, setItem }: any) => {
   return (
-    <Container maxWidth={containerWidth}>
+    <>
       <Typography variant="h5" color="initial">
         Dashboard
       </Typography>
@@ -18,7 +18,7 @@ const DashboardMain = ({ item, setItem }: any) => {
           productos en grilla
         </Button>
       </Stack>
-    </Container>
+    </>
   )
 }
 
